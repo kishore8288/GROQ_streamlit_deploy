@@ -14,7 +14,7 @@ st.title("Chat with LLaMA 3 on Groq AI")
 st.markdown("Built with Streamlit + Groq API")
 
 # User input
-prompt = st.text_area("Enter your prompt:", height=50)
+prompt = st.text_area("Enter your prompt:", height=70)
 
 # Send to Groq
 if st.button("Generate"):
