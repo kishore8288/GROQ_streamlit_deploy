@@ -33,7 +33,7 @@ if st.button("Generate"):
                 {"role": "user", "content": prompt}
             ],
             "temperature": 0.7,
-            "max_tokens": 10000
+            "max_tokens": 8000
         }
 
         with st.spinner("Generating..."):
