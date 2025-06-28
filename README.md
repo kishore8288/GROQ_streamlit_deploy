@@ -1,4 +1,4 @@
-# LLaMa3 deployment using Groq API
+# RAG deployment using Groq API
 It's a basic project of me.\
 My first project on LLM deployment\
 
