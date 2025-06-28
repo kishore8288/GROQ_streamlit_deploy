@@ -24,5 +24,3 @@ python-dotenv==1.0.1
 
 # For typing and env support
 typing-extensions>=4.5.0
-
-fitz
