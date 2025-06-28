@@ -2,3 +2,27 @@ pathlib
 dotenv
 streamlit
 requests
+# Core App Framework
+streamlit==1.34.0
+
+# PDF parsing
+PyMuPDF==1.23.21
+
+# Embeddings
+sentence-transformers==2.6.1
+
+# Tokenization and NLP
+nltk==3.8.1
+
+# Vector Search Index
+faiss-cpu==1.7.4
+
+# LLM Utilities
+transformers==4.41.2
+requests==2.31.0
+python-dotenv==1.0.1
+
+# For typing and env support
+typing-extensions>=4.5.0
+
+fitz
