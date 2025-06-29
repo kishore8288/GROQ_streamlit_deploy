@@ -7,6 +7,8 @@ import requests
 import os
 from dotenv import load_dotenv
 from pathlib import Path
+import chromadb
+from chromadb.utils.embedding_functions import SentenceTransformerEmbeddingFunction
 from sentence_transformers import SentenceTransformer
 from nltk.tokenize import sent_tokenize
 
@@ -148,11 +150,12 @@ if uploaded_file:
     with st.spinner("📖 Reading and processing your document..."):
         text = extract_text_from_pdf(uploaded_file)
         chunks = better_split(text)
-        embeddings = embedder.encode(chunks, convert_to_numpy=True)
-        index = faiss.IndexFlatL2(embeddings.shape[1])
-        index.add(embeddings)
+        chroma_client = chromadb.Client()
+        embed_fn = SentenceTransformerEmbeddingFunction(model_name="all-MiniLM-L6-v2")
+        collection = chroma_client.create_collection(name="mydocs", embedding_function=embed_fn)
+        collection.add(documents=chunks, ids=[str(i) for i in range(len(chunks))])
         st.session_state.chunks = chunks
-        st.session_state.index = index
+        st.session_state.collections = collection
         st.success("✅ Document processed successfully!")
 
 # Input query
