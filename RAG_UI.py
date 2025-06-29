@@ -1,5 +1,6 @@
 import streamlit as st
-import fitz  # PyMuPDF
+#import fitz  # PyMuPDF
+import pdfplumber
 import faiss
 import numpy as np
 import requests
@@ -79,8 +80,13 @@ embedder = load_models()
 
 # Extract text from PDF
 def extract_text_from_pdf(uploaded_file):
-    doc = fitz.open(stream=uploaded_file.read(), filetype="pdf")
-    return "\n".join([page.get_text() for page in doc])
+    text = ""
+    with pdfplumber.open(uploaded_file) as pdf:
+        for page in pdf.pages:
+            page_text = page.extract_text()
+            if page_text:
+                text += page_text + "\n"
+    return text
 
 # Split text into chunks
 def better_split(text, chunk_size=300, overlap=50):
