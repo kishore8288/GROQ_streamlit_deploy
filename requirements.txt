@@ -15,7 +15,7 @@ sentence-transformers==2.6.1
 nltk==3.8.1
 
 # Vector Search Index
-faiss-cpu==1.7.4
+chromadb
 
 # LLM Utilities
 transformers==4.41.2
